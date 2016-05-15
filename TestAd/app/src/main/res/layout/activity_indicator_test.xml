@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zht="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.zhhtao.viewtest.ZhtCustomIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        zht:unselect_text_color="#666"
+        zht:select_text_color="@android:color/holo_blue_dark"
+        zht:text_size="16sp"
+        zht:indicator_color="@android:color/holo_blue_dark"
+        zht:indicator_height="2dp"
+        zht:first_select_index="1"
+        android:background="#ffc"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewPager">
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

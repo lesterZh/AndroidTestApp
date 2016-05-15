@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!--此时button会把LinearLayout的点击事件消费掉，从而使得LinearLayout无法响应点击-->
+    <!--应禁止button点击，这样button的onTouchEvent返回false,点击事件被回送给LinearLayout-->
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp"
+    android:clickable="false"
+    android:text="delete" />
+</LinearLayout>
