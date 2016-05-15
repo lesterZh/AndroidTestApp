@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.zhhtao.activity.AnimatorTestActivity;
+import com.zhhtao.activity.IndicatorAdvanceActivity;
 import com.zhhtao.activity.IndicatorTestActivity;
 import com.zhhtao.utils.ZhtUtils;
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnIndicator;
     @InjectView(R.id.btn_animator)
     Button btnAnimator;
+    @InjectView(R.id.btn_new_indicator)
+    Button btnNewIndicator;
 
 
     @Override
@@ -27,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         mContext = this;
-
 
 
     }
@@ -41,5 +43,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_animator)
     public void btnAnimator() {
         ZhtUtils.gotoIntent(mContext, AnimatorTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_new_indicator)
+    public void btnNewIndicator() {
+        ZhtUtils.gotoIntent(mContext, IndicatorAdvanceActivity.class);
     }
 }
