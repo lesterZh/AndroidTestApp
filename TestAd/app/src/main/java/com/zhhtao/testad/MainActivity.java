@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.zhhtao.activity.AnimatorTestActivity;
+import com.zhhtao.activity.CalendarTestActivity;
+import com.zhhtao.activity.DrawTestActivity;
 import com.zhhtao.activity.IndicatorAdvanceActivity;
 import com.zhhtao.activity.IndicatorTestActivity;
+import com.zhhtao.activity.ScrollTestActivity;
 import com.zhhtao.utils.ZhtUtils;
 
 import butterknife.ButterKnife;
@@ -22,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
     Button btnAnimator;
     @InjectView(R.id.btn_new_indicator)
     Button btnNewIndicator;
+    @InjectView(R.id.btn_scroll_test)
+    Button btnScrollTest;
+    @InjectView(R.id.btn_draw_test)
+    Button btnDrawTest;
+    @InjectView(R.id.btn_calendar)
+    Button btnCalendar;
 
 
     @Override
@@ -48,5 +57,20 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_new_indicator)
     public void btnNewIndicator() {
         ZhtUtils.gotoIntent(mContext, IndicatorAdvanceActivity.class);
+    }
+
+    @OnClick(R.id.btn_scroll_test)
+    public void btnScrollTest() {
+        ZhtUtils.gotoIntent(mContext, ScrollTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_draw_test)
+    public void btnDrawTest() {
+        ZhtUtils.gotoIntent(mContext, DrawTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_calendar)
+    public void btnCalendar() {
+        ZhtUtils.gotoIntent(mContext, CalendarTestActivity.class);
     }
 }

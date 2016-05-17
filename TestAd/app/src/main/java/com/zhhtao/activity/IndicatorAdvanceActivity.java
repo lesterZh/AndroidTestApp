@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.LogUtil;
-import com.zhhtao.viewtest.IndicatorAdvanced;
+import com.zhhtao.customview.IndicatorAdvanced;
 
 import java.util.ArrayList;
 import java.util.List;

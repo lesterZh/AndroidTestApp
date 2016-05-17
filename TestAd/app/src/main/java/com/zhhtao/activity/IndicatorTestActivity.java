@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.zhhtao.testad.R;
-import com.zhhtao.viewtest.ZhtCustomIndicator;
+import com.zhhtao.customview.ZhtCustomIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
