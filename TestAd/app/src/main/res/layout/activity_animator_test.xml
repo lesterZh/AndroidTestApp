@@ -1,102 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
 
-    tools:context="com.zhhtao.activity.AnimatorTestActivity">
-
-    <ImageView
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/iv_girl"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="146dp"
-        android:src="@drawable/debug_image_girl"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="show"
-        android:id="@+id/btn_scale"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hide"
-        android:id="@+id/btn_hide"
-        android:layout_alignBottom="@+id/btn_scale"
-        android:layout_toRightOf="@+id/btn_scale"
-        android:layout_toEndOf="@+id/btn_scale"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="下拉界面"
-        android:id="@+id/btn_down"
-        android:layout_alignBottom="@+id/btn_hide"
-        android:layout_centerHorizontal="true"/>
-
-
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/debug_image_girl"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="添加小火箭"
-        android:id="@+id/btn_add_window"
-        android:layout_below="@+id/btn_hide"
-        android:layout_toRightOf="@+id/btn_scale"
-        android:layout_toEndOf="@+id/btn_scale"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="移动小火箭"
-        android:id="@+id/btn_move"
-        android:layout_below="@+id/btn_add_window"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="移除小火箭"
-        android:id="@+id/btn_remove"
-        android:layout_alignBottom="@+id/btn_move"
-        android:layout_toLeftOf="@+id/btn_down"
-        android:layout_toStartOf="@+id/btn_down"/>
-
-
-</RelativeLayout>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ll_down"
-        android:orientation="vertical"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        >
+
+        tools:context="com.zhhtao.activity.AnimatorTestActivity">
+
+        <ImageView
+            android:id="@+id/iv_girl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="146dp"
+            android:src="@drawable/debug_image_girl"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btn_scale"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="show" />
+
+        <Button
+            android:id="@+id/btn_hide"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/btn_scale"
+            android:layout_toEndOf="@+id/btn_scale"
+            android:layout_toRightOf="@+id/btn_scale"
+            android:text="hide" />
+
+        <Button
+            android:id="@+id/btn_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/btn_hide"
+            android:layout_centerHorizontal="true"
+            android:text="下拉界面" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_change_bg"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/systemBule"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/shade"
+                android:id="@+id/iv_progress"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add_window"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_hide"
+            android:layout_toEndOf="@+id/btn_scale"
+            android:layout_toRightOf="@+id/btn_scale"
+            android:text="添加小火箭" />
+
+        <Button
+            android:id="@+id/btn_move"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_add_window"
+            android:layout_centerHorizontal="true"
+            android:text="移动小火箭" />
+
+        <Button
+            android:id="@+id/btn_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/btn_move"
+            android:layout_toLeftOf="@+id/btn_down"
+            android:layout_toStartOf="@+id/btn_down"
+            android:text="移除小火箭" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="进度效果"
+            android:id="@+id/btn_progress"
+            android:layout_above="@+id/ll_change_bg"
+            android:layout_toLeftOf="@+id/iv_girl"
+            android:layout_toStartOf="@+id/iv_girl" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_down"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <CalendarView
             android:layout_width="match_parent"
@@ -107,15 +123,15 @@
 
 
         <Button
+            android:id="@+id/btn_down_dismiss"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_down_dismiss"
-            android:text="取消"/>
+            android:text="取消" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#3000"
-            />
+            android:background="#3000" />
 
     </LinearLayout>
 </FrameLayout>

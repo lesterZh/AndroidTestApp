@@ -18,6 +18,7 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.zhhtao.testad.R;
+import com.zhhtao.utils.LogUtil;
 /*
 
 使用示例：
@@ -33,6 +34,7 @@ import com.zhhtao.testad.R;
         zht:text_left_right_padding = "10dp"
         zht:indicator_color="@android:color/holo_blue_dark"
         zht:indicator_height="2dp"
+        zht:indicator_width = "20dp"
         zht:first_select_index="1"
 </com.zhhtao.viewtest.IndicatorAdvanced>
     注意这里的android:layout_height="wrap_content"必须使用wrap_content的属性，整个View的高度
@@ -253,17 +255,41 @@ public class IndicatorAdvanced extends LinearLayout {
         //注意 这里onPageSelected的position 和onPageScrolled的position是不同步的。
         //指示条的动态位置应参照onPageScrolled的position和positionOffset
         //titleScrollOffSet用于控制当标题滚动时同步滚动指示条
-        indicatorCenterX = cellWidth / 2 + onPageScrolledPosition * cellWidth
-                + cellWidth * mPositionOffset - titleScrollOffSet;
+//        indicatorCenterX = cellWidth / 2 + onPageScrolledPosition * cellWidth
+//                + cellWidth * mPositionOffset - titleScrollOffSet;
+
+        //修正当标题长度不一致以后indicator指示色块的位置出现偏差
+        View curView = mlinearLayout.getChildAt(onPageScrolledPosition);
+        View nextView = mlinearLayout.getChildAt(onPageScrolledPosition+1);
+        int curViewCenterX = (curView.getRight()+curView.getLeft())/2;
+
+        int nextViewCenterX = 0;
+        if (nextView == null) {
+            nextViewCenterX = curViewCenterX;
+        } else {
+            nextViewCenterX = (nextView.getRight()+nextView.getLeft())/2;
+        }
+
+        //titleScrollOffSet 用于修正当indicator滚动时，其底部指示色块页随之滚动
+        indicatorCenterX = curViewCenterX
+                + (nextViewCenterX - curViewCenterX) * mPositionOffset - titleScrollOffSet;
         drawIndicator(canvas, indicatorCenterX);
     }
 
 
+    /**
+     * 设置标题
+     * @param ts
+     */
     public void setTitles(String[] ts) {
         titles = ts;
         addTitles();
     }
 
+    /**
+     * 绑定viewpager  viewpager的页数应和indicator的标题数目一致
+     * @param viewPager
+     */
     public void bindViewPager(ViewPager viewPager) {
 
         mViewPager = viewPager;
@@ -305,6 +331,14 @@ public class IndicatorAdvanced extends LinearLayout {
 
         //这里要设定ViewPager的初始index
         mViewPager.setCurrentItem(curSelectedIndex);
+    }
+
+    /**
+     * 设定当前处于第几个页面，indicator也会同步更新
+     * @param index
+     */
+    public void setIndex(int index) {
+        mViewPager.setCurrentItem(index);
     }
 
     @Override

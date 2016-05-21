@@ -19,6 +19,7 @@
         zht:text_left_right_padding = "10dp"
         zht:indicator_color="@android:color/holo_blue_dark"
         zht:indicator_height="2dp"
+        zht:indicator_width = "35dp"
         zht:first_select_index="1"
 
         android:background="#ffc">

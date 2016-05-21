@@ -24,21 +24,26 @@ public class IndicatorAdvanceActivity extends BaseActivty {
     @InjectView(R.id.viewPager)
     ViewPager viewPager;
 
+    String[] titles = new String[15];
+    int items = 15;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indicator_advance);
         ButterKnife.inject(this);
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < items; i++) {
             Button button = new Button(mContext);
             button.setText("page" + (i + 1));
             viewList.add(button);
         }
-        LogUtil.i("activity ");
-        indicator.setTitles(new String[]{"天使", "上帝", "亚当","天使", "上帝", "亚当","天使", "上帝", "亚当","天使", "上帝", "亚当"});
+        for (int i=0; i<items; i++) {
+            titles[i] = "标题"+(i+1);
+        }
+        indicator.setTitles(titles);
         viewPager.setAdapter(new MyViewPagerAdapter());
         indicator.bindViewPager(viewPager);
+        indicator.setIndex(4);
     }
 
     List<View> viewList = new ArrayList<>();
