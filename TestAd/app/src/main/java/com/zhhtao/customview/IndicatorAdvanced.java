@@ -264,6 +264,12 @@ public class IndicatorAdvanced extends LinearLayout {
         addTitles();
     }
 
+    public void setSelected(int index) {
+        if (mViewPager != null) {
+            mViewPager.setCurrentItem(index);
+        }
+    }
+
     public void bindViewPager(ViewPager viewPager) {
 
         mViewPager = viewPager;
