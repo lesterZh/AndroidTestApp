@@ -32,13 +32,12 @@ public class IndicatorTestActivity extends BaseActivty {
         setContentView(R.layout.activity_indicator_test);
         ButterKnife.inject(this);
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 5; i++) {
             Button button = new Button(mContext);
             button.setText("page" + (i + 1));
             viewList.add(button);
         }
-        indicator.setTitles(new String[]{"天使", "上帝", "亚当","苹果","西瓜","香蕉","菠萝"
-                ,"天使", "上帝", "亚当","苹果","西瓜","香蕉","菠萝"});
+        indicator.setTitles(new String[]{"天使", "上帝", "亚当","苹果","西瓜"});
         viewPager.setAdapter(new MyViewPagerAdapter());
         indicator.bindViewPager(viewPager);
     }

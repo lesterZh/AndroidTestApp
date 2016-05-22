@@ -1,10 +1,15 @@
 package com.zhhtao.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -39,6 +44,12 @@ public class AnimatorTestActivity extends BaseActivty {
     Button btnAddWindow;
     @InjectView(R.id.btn_move)
     Button btnMove;
+    @InjectView(R.id.iv_progress)
+    ImageView ivProgress;
+    @InjectView(R.id.ll_change_bg)
+    LinearLayout llChangeBg;
+    @InjectView(R.id.btn_progress)
+    Button btnProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,7 +164,7 @@ public class AnimatorTestActivity extends BaseActivty {
                         | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
 
                         //设置背景的不透明效果
-                        |WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+                        | WindowManager.LayoutParams.FLAG_DIM_BEHIND;
                 params.dimAmount = 0.4f;
 
                 //显示在屏幕最上面，可移动
@@ -207,6 +218,25 @@ public class AnimatorTestActivity extends BaseActivty {
                 wm.removeViewImmediate(ivRocket);
                 break;
         }
+    }
+
+    @OnClick(R.id.btn_progress)
+    public void btnProgress() {
+        llChangeBg.setBackgroundColor(Color.BLUE);
+
+        ivProgress.setVisibility(View.VISIBLE);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(ivProgress, "translationX", -ivProgress.getWidth(), ivProgress.getWidth());
+        animator.setDuration(1200);
+        animator.setRepeatCount(3);
+        animator.setRepeatMode(ValueAnimator.RESTART);
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                animation.start();
+            }
+        });
+        animator.start();
+
     }
 }
 
