@@ -10,6 +10,7 @@ import com.zhhtao.activity.CalendarTestActivity;
 import com.zhhtao.activity.DrawTestActivity;
 import com.zhhtao.activity.IndicatorAdvanceActivity;
 import com.zhhtao.activity.IndicatorTestActivity;
+import com.zhhtao.activity.RetrofitTestActivity;
 import com.zhhtao.activity.ScrollTestActivity;
 import com.zhhtao.utils.ZhtUtils;
 
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnDrawTest;
     @InjectView(R.id.btn_calendar)
     Button btnCalendar;
+    @InjectView(R.id.btn_net)
+    Button btnNet;
 
 
     @Override
@@ -72,5 +75,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_calendar)
     public void btnCalendar() {
         ZhtUtils.gotoIntent(mContext, CalendarTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_net)
+    public void btnNet() {
+        ZhtUtils.gotoIntent(mContext, RetrofitTestActivity.class);
     }
 }
