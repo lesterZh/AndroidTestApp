@@ -14,5 +14,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"/>
 
+    <com.zhhtao.ui.ScaleWheel
+        android:layout_below="@id/view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/scale_view"/>
 
 </RelativeLayout>
