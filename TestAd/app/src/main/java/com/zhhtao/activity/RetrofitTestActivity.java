@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.zhhtao.base.BaseActivty;
 import com.zhhtao.bean.PhoneResultBean;
 import com.zhhtao.custominterface.PhoneService;
 import com.zhhtao.custominterface.PhoneServiceGetString;
@@ -13,7 +14,7 @@ import com.zhhtao.testad.R;
 import java.io.IOException;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -27,20 +28,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitTestActivity extends BaseActivty {
 
-    @InjectView(R.id.et_input)
+    @BindView(R.id.et_input)
     EditText etInput;
-    @InjectView(R.id.btn_query)
+    @BindView(R.id.btn_query)
     Button btnQuery;
-    @InjectView(R.id.tv_res)
+    @BindView(R.id.tv_res)
     TextView tvRes;
-    @InjectView(R.id.btn_get_string)
+    @BindView(R.id.btn_get_string)
     Button btnGetString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         tvRes.setText("查询结果：");
         etInput.setText("13312345678");
     }

@@ -105,10 +105,21 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_margin="3dp"
         android:text="下拉刷新"
         android:id="@+id/btn_refresh"
         android:layout_alignTop="@+id/btn_rx_java"
         android:layout_alignLeft="@+id/btn_animator"
         android:layout_alignStart="@+id/btn_animator"/>
+
+    <Button
+        android:layout_margin="3dp"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="leancloud"
+        android:id="@+id/btn_lean_cloud"
+        android:layout_below="@+id/btn_scroll_test"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

@@ -20,45 +20,46 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import com.zhhtao.base.BaseActivty;
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.UIUtils;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class AnimatorTestActivity extends BaseActivty {
 
-    @InjectView(R.id.iv_girl)
+    @BindView(R.id.iv_girl)
     ImageView ivGirl;
-    @InjectView(R.id.btn_scale)
+    @BindView(R.id.btn_scale)
     Button btnShow;
-    @InjectView(R.id.btn_hide)
+    @BindView(R.id.btn_hide)
     Button btnHide;
-    @InjectView(R.id.btn_down)
+    @BindView(R.id.btn_down)
     Button btnDown;
-    @InjectView(R.id.btn_down_dismiss)
+    @BindView(R.id.btn_down_dismiss)
     Button btnDownDismiss;
-    @InjectView(R.id.ll_down)
+    @BindView(R.id.ll_down)
     LinearLayout llDown;
-    @InjectView(R.id.btn_add_window)
+    @BindView(R.id.btn_add_window)
     Button btnAddWindow;
-    @InjectView(R.id.btn_move)
+    @BindView(R.id.btn_move)
     Button btnMove;
-    @InjectView(R.id.iv_progress)
+    @BindView(R.id.iv_progress)
     ImageView ivProgress;
-    @InjectView(R.id.ll_change_bg)
+    @BindView(R.id.ll_change_bg)
     LinearLayout llChangeBg;
-    @InjectView(R.id.btn_progress)
+    @BindView(R.id.btn_progress)
     Button btnProgress;
-    @InjectView(R.id.btn_pop)
+    @BindView(R.id.btn_pop)
     Button btnPop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animator_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         llDown.setVisibility(View.INVISIBLE);//消除第一次动画因gone属性产生的bug
     }

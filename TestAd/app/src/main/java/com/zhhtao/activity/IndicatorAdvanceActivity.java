@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.zhhtao.base.BaseActivty;
 import com.zhhtao.customview.IndicatorAdvanced;
 import com.zhhtao.testad.R;
 
@@ -14,13 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 
 public class IndicatorAdvanceActivity extends BaseActivty {
 
-    @InjectView(R.id.indicator)
+    @BindView(R.id.indicator)
     IndicatorAdvanced indicator;
-    @InjectView(R.id.viewPager)
+    @BindView(R.id.viewPager)
     ViewPager viewPager;
 
 
@@ -30,7 +31,7 @@ public class IndicatorAdvanceActivity extends BaseActivty {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indicator_advance);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
 
         for (int i = 0; i < items; i++) {

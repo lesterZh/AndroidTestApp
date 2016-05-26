@@ -9,6 +9,7 @@ import com.prolificinteractive.materialcalendarview.DayView;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
+import com.zhhtao.base.BaseActivty;
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.UIUtils;
 
@@ -17,14 +18,14 @@ import java.util.Calendar;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 
 /**
  * Created by zhangHaiTao on 2016/5/17.
  */
 public class CalendarTestActivity extends BaseActivty {
 
-    @InjectView(R.id.calendar_view)
+    @BindView(R.id.calendar_view)
     MaterialCalendarView calendarView;
 
     List<CalendarDay> orderDayList = new ArrayList<>();
@@ -33,7 +34,7 @@ public class CalendarTestActivity extends BaseActivty {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
 
         Calendar mCalendar = Calendar.getInstance();

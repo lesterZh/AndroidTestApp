@@ -1,1 +1,1 @@
-include ':app', ':library', ':calendarlib', ':daogenerator'
+include ':app', ':library', ':calendarlib', ':daogenerator', ':leanchatlib'

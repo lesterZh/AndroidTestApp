@@ -4,30 +4,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.zhhtao.base.BaseActivty;
 import com.zhhtao.customview.QuickIndexBar;
 import com.zhhtao.testad.R;
 import com.zhhtao.ui.ScaleWheel;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 
 /**
  * Created by zhangHaiTao on 2016/5/17.
  */
 public class DrawTestActivity extends BaseActivty {
 
-    @InjectView(R.id.scale_view)
+    @BindView(R.id.scale_view)
     ScaleWheel scaleView;
-    @InjectView(R.id.index_bar)
+    @BindView(R.id.index_bar)
     QuickIndexBar indexBar;
-    @InjectView(R.id.tv_show_quick_index)
+    @BindView(R.id.tv_show_quick_index)
     TextView tvShowQuickIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         scaleView.scrollToValue(100);
 

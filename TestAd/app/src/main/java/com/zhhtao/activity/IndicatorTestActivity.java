@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.zhhtao.base.BaseActivty;
 import com.zhhtao.testad.R;
 import com.zhhtao.customview.ZhtCustomIndicator;
 
@@ -14,15 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 
 /**
  * Created by zhangHaiTao on 2016/5/13.
  */
 public class IndicatorTestActivity extends BaseActivty {
-    @InjectView(R.id.indicator)
+    @BindView(R.id.indicator)
     ZhtCustomIndicator indicator;
-    @InjectView(R.id.viewPager)
+    @BindView(R.id.viewPager)
     ViewPager viewPager;
 
     List<View> viewList = new ArrayList<>();
@@ -30,7 +31,7 @@ public class IndicatorTestActivity extends BaseActivty {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indicator_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         for (int i = 0; i < 5; i++) {
             Button button = new Button(mContext);

@@ -15,43 +15,45 @@ import com.zhhtao.activity.RetrofitTestActivity;
 import com.zhhtao.activity.RxJavaActivity;
 import com.zhhtao.activity.ScrollTestActivity;
 import com.zhhtao.activity.SwipeRefreshLayoutTestActivity;
+import com.zhhtao.leancloud.LeanCloudInitActivity;
 import com.zhhtao.utils.ZhtUtils;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     Activity mContext;
-    @InjectView(R.id.btn_indicator)
-    Button btnIndicator;
-    @InjectView(R.id.btn_animator)
-    Button btnAnimator;
-    @InjectView(R.id.btn_new_indicator)
-    Button btnNewIndicator;
-    @InjectView(R.id.btn_scroll_test)
-    Button btnScrollTest;
-    @InjectView(R.id.btn_draw_test)
-    Button btnDrawTest;
-    @InjectView(R.id.btn_calendar)
-    Button btnCalendar;
-    @InjectView(R.id.btn_net)
-    Button btnNet;
-    @InjectView(R.id.btn_green_dao)
-    Button btnGreenDao;
-    @InjectView(R.id.btn_rx_java)
-    Button btnRxJava;
-    @InjectView(R.id.btn_refresh)
-    Button btnRefresh;
 
+    @BindView(R.id.btn_indicator)
+    Button btnIndicator;
+    @BindView(R.id.btn_animator)
+    Button btnAnimator;
+    @BindView(R.id.btn_new_indicator)
+    Button btnNewIndicator;
+    @BindView(R.id.btn_scroll_test)
+    Button btnScrollTest;
+    @BindView(R.id.btn_draw_test)
+    Button btnDrawTest;
+    @BindView(R.id.btn_calendar)
+    Button btnCalendar;
+    @BindView(R.id.btn_net)
+    Button btnNet;
+    @BindView(R.id.btn_green_dao)
+    Button btnGreenDao;
+    @BindView(R.id.btn_rx_java)
+    Button btnRxJava;
+    @BindView(R.id.btn_refresh)
+    Button btnRefresh;
+    @BindView(R.id.btn_lean_cloud)
+    Button btnLeanCloud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         mContext = this;
-
 
     }
 
@@ -105,5 +107,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_refresh)
     public void btnRefresh() {
         ZhtUtils.gotoIntent(mContext, SwipeRefreshLayoutTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_lean_cloud)
+    public void btnLeanCloud() {
+        ZhtUtils.gotoIntent(mContext, LeanCloudInitActivity.class);
     }
 }

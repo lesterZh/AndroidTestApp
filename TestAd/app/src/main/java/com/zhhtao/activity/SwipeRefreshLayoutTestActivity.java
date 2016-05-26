@@ -10,20 +10,20 @@ import android.widget.TextView;
 import com.zhhtao.testad.R;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 
 public class SwipeRefreshLayoutTestActivity extends AppCompatActivity {
 
-    @InjectView(R.id.tv_random_num)
+    @BindView(R.id.tv_random_num)
     TextView tvRandomNum;
-    @InjectView(R.id.swipe_container)
+    @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_refresh_layout_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_purple, android.R.color.holo_blue_bright, android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);

@@ -9,7 +9,7 @@ import com.zhhtao.testad.R;
 import com.zhhtao.utils.LogUtil;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -19,14 +19,14 @@ import rx.schedulers.Schedulers;
 
 public class RxJavaActivity extends AppCompatActivity {
 
-    @InjectView(R.id.imageView)
+    @BindView(R.id.imageView)
     ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         testRxJava();
         testRxJava2();

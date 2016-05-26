@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.zhhtao.base.BaseActivty;
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.FormatUtil;
 
@@ -19,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import butterknife.OnClick;
 import greendao.note.DaoMaster;
 import greendao.note.DaoSession;
@@ -32,31 +33,31 @@ public class GreenDaoTestActivity extends BaseActivty {
     DaoMaster daoMaster;
     DaoSession daoSession;
     NoteDao noteDao;
-    @InjectView(R.id.et_input)
+    @BindView(R.id.et_input)
     EditText etInput;
-    @InjectView(R.id.btn_add)
+    @BindView(R.id.btn_add)
     Button btnAdd;
-    @InjectView(R.id.btn_query)
+    @BindView(R.id.btn_query)
     Button btnQuery;
-    @InjectView(R.id.btn_update)
+    @BindView(R.id.btn_update)
     Button btnUpdate;
-    @InjectView(R.id.btn_delete)
+    @BindView(R.id.btn_delete)
     Button btnDelete;
-    @InjectView(R.id.lv_datas)
+    @BindView(R.id.lv_datas)
     ListView lvDatas;
     MyAdapter myAdapter;
 
     String input;
     List<Note> notesList = new ArrayList<>();
     List<Note> queryList = new ArrayList<>();
-    @InjectView(R.id.btn_delete_all)
+    @BindView(R.id.btn_delete_all)
     Button btnDeleteAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_green_dao_test);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         initDb();
 
