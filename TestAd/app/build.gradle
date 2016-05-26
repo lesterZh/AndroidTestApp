@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java','src/main/java-gen']
+        }
+    }
 }
 
 dependencies {
@@ -35,7 +41,11 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
 
     compile 'org.greenrobot:greendao:2.2.0'
-    compile 'org.greenrobot:greendao-generator:2.2.0'
+
+    compile 'io.reactivex:rxandroid:1.2.0'
+// Because RxAndroid releases are few and far between, it is recommended you also
+// explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile 'io.reactivex:rxjava:1.1.5'
 
     compile project(':calendarlib')
 }

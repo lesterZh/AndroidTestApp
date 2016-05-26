@@ -23,8 +23,12 @@ public class ScaleWheel extends View {
     float divideSpace = 30;
     int viewWidth;
     int viewHeight;
+    int selectedCenterX;
     int leftBound;
     int rightBound;
+    int startValue = 0;
+    int endValue = 2000;
+
 
     Paint normalLinePaint;
     Paint selectedLinePaint;
@@ -85,30 +89,39 @@ public class ScaleWheel extends View {
 
     }
 
+    public void scrollToValue(int value) {
+        int offset = (int) (value * divideSpace);
+        scrollTo(offset, 0);
+    }
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.parseColor("#ffffee"));
 
-        float drawtTextX = (getScrollX()+viewWidth/2);
-        int value = (int) (drawtTextX / divideSpace);
-        canvas.drawText(value+"",
-                drawtTextX, viewHeight/2-sp2px(mContext,10),
-                selectedValueTextPaint);
+        drawSelectedValue(canvas);
 
         drawNormalLineAndText(canvas);
         drawSelectedLine(canvas);
     }
 
+    private void drawSelectedValue(Canvas canvas) {
+        float drawtTextX = (getScrollX()+viewWidth/2);
+        int value = (int) (drawtTextX / divideSpace);
+        canvas.drawText(value+"",
+                drawtTextX, viewHeight/2-sp2px(mContext,10),
+                selectedValueTextPaint);
+    }
+
     private void drawSelectedLine(Canvas canvas) {
-        int drawSelectedX = getScrollX() + viewWidth / 2;
+        int drawSelectedX = getScrollX() + selectedCenterX;
         canvas.drawLine(drawSelectedX, viewHeight / 2,
                 drawSelectedX, viewHeight / 2 + longLineHeight, selectedLinePaint);
     }
 
     private void drawNormalLineAndText(Canvas canvas) {
-        int drawX = 0;
-        leftBound = 0;
-        for (int i = 0; i < 5 * 200; i++) {
+        int drawX = getScrollX();
+
+
+        for (int i = startValue; drawX < getScrollX() + viewWidth; i++) {
             drawX = (int) (i * divideSpace);
 
             if (i % 5 == 0) {
@@ -122,7 +135,7 @@ public class ScaleWheel extends View {
                         normalLinePaint);
             }
         }
-        rightBound = drawX - viewWidth;
+
     }
 
     @Override
@@ -131,6 +144,10 @@ public class ScaleWheel extends View {
 
         viewWidth = getMeasuredWidth();
         viewHeight = getMeasuredHeight();
+        selectedCenterX = (int)((int) (viewWidth / divideSpace / 2) * divideSpace);
+
+        leftBound = (int) (startValue * divideSpace) - selectedCenterX;
+        rightBound = (int) (endValue * divideSpace) - selectedCenterX;
     }
 
     float curX = 0;
@@ -148,6 +165,7 @@ public class ScaleWheel extends View {
                 mScroller.forceFinished(true);
                 break;
             case MotionEvent.ACTION_MOVE:
+                //这里滚动的效果比直接放在gesture的onscroll里效果好
                 curX = event.getRawX();
                 difX = lastX - curX;
                 scrollBy((int) difX, 0);
@@ -167,7 +185,7 @@ public class ScaleWheel extends View {
                     invalidate();
                 }
 
-                scrollToValue(curScrollX);
+                adjustToValue(curScrollX);
 
                 break;
         }
@@ -175,7 +193,7 @@ public class ScaleWheel extends View {
         return true;
     }
 
-    private void scrollToValue(int curScrollX) {
+    private void adjustToValue(int curScrollX) {
         int modValue = (curScrollX % (int) divideSpace);
         int leftIndex = (curScrollX / (int) divideSpace);
         if (modValue != 0) {
@@ -232,7 +250,7 @@ public class ScaleWheel extends View {
             scrollTo(mScroller.getCurrX(), 0);
             postInvalidate();
         } else if (isFling){
-            scrollToValue(getScrollX());
+            adjustToValue(getScrollX());
             isFling = false;
         }
     }

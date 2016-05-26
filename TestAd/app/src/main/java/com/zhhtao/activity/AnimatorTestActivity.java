@@ -8,8 +8,8 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,6 +18,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.UIUtils;
@@ -50,6 +51,8 @@ public class AnimatorTestActivity extends BaseActivty {
     LinearLayout llChangeBg;
     @InjectView(R.id.btn_progress)
     Button btnProgress;
+    @InjectView(R.id.btn_pop)
+    Button btnPop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,6 +239,28 @@ public class AnimatorTestActivity extends BaseActivty {
             }
         });
         animator.start();
+
+    }
+
+
+    PopupWindow popupWindow ;
+    @OnClick(R.id.btn_pop)
+    public void btnPop() {
+        popupWindow = new PopupWindow(mContext);
+        View view = View.inflate(mContext, R.layout.layout_pop_window, null);
+        view.findViewById(R.id.btn_pop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        popupWindow.setContentView(view);
+        popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
+        popupWindow.setFocusable(true);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0x22000000));
+        popupWindow.showAsDropDown(btnPop);
 
     }
 }

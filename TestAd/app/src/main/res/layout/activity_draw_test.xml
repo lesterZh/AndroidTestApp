@@ -15,9 +15,29 @@
         android:layout_marginTop="57dp"/>
 
     <com.zhhtao.ui.ScaleWheel
+
+        android:layout_margin="30dp"
         android:layout_below="@id/view"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/scale_view"/>
 
+    <com.zhhtao.customview.QuickIndexBar
+        android:id="@+id/index_bar"
+        android:background="@drawable/bg_gray_corner_20"
+        android:layout_alignParentRight="true"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tv_show_quick_index"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/bg_gray_corner_5"
+        android:textSize="40sp"
+        android:text="A"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        />
 </RelativeLayout>

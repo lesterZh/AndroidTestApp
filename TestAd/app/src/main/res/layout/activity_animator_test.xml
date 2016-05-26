@@ -104,6 +104,16 @@
             android:layout_toLeftOf="@+id/iv_girl"
             android:layout_toStartOf="@+id/iv_girl" />
 
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="popWindow"
+            android:id="@+id/btn_pop"
+            android:layout_below="@+id/btn_down"
+            android:layout_alignLeft="@+id/btn_move"
+            android:layout_alignStart="@+id/btn_move"/>
+
 
     </RelativeLayout>
 

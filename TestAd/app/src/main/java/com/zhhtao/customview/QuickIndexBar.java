@@ -7,7 +7,10 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
+import com.zhhtao.testad.R;
 import com.zhhtao.utils.DisplayUtil;
 
 /**
@@ -15,15 +18,18 @@ import com.zhhtao.utils.DisplayUtil;
  */
 public class QuickIndexBar extends View {
 
-    String[] words ={"↑","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S"
-            ,"T","U","V","W","X","Y","Z","↓"};
+    String[] words = {"↑", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S"
+            , "T", "U", "V", "W", "X", "Y", "Z", "↓"};
 
     int viewHeight, viewWidth;
     float cellHeight;
-    float textHeight,textWidth;
+    float textHeight, textWidth;
 
     private Paint mPaint;
 
+    TextView popText;
+    PopupWindow popupWindow;
+    Context mContext;
     public QuickIndexBar(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -34,6 +40,11 @@ public class QuickIndexBar extends View {
         //获取字体的高度，宽度是不一定的，在后面的for循环中获取
         textHeight = fontMetrics.descent - fontMetrics.ascent;
 
+        mContext = context;
+        popText = new TextView(context);
+
+        popText.setBackgroundResource(R.drawable.btn_chat_blue);
+        popupWindow = new PopupWindow(popText);
     }
 
     //获取View 的宽高
@@ -49,7 +60,7 @@ public class QuickIndexBar extends View {
     protected void onDraw(Canvas canvas) {
         cellHeight = viewHeight / words.length;
 
-        for (int i=0; i<words.length; i++) {
+        for (int i = 0; i < words.length; i++) {
             String word = words[i];
             textWidth = mPaint.measureText(word);
 
@@ -61,62 +72,74 @@ public class QuickIndexBar extends View {
                 continue;
             }
 
-            canvas.drawText(word, viewWidth/2-textWidth/2,
-                    cellHeight/2 + textHeight/2 + i*cellHeight, mPaint);
+            canvas.drawText(word, viewWidth / 2 - textWidth / 2,
+                    cellHeight / 2 + textHeight / 2 + i * cellHeight, mPaint);
         }
     }
 
     public interface OnSelectChangeListener {
-        void onChange(int curIndex);
+        void onChange(String word);
     }
+
     OnSelectChangeListener mChangeListener;
+
     public void setOnSelectChangeListener(OnSelectChangeListener s) {
         mChangeListener = s;
     }
 
 
     float yDown;
-    int curIndex = - 1;
-    int preIndex = - 1;
+    int curIndex = -1;
+    int preIndex = -1;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //滑出指示条的区域判断
         if (event.getX() < 0 || event.getX() > viewWidth) {
             curIndex = -1;
             invalidate();
+            mChangeListener.onChange("");//返回无效的空字符
             return false;
         }
 
         switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN :
+            case MotionEvent.ACTION_DOWN:
                 yDown = event.getY();
                 curIndex = (int) (yDown / cellHeight);
                 invalidate();
 
-                //过滤重复触发
-                if (curIndex != preIndex)
-                    mChangeListener.onChange(curIndex);
+                mChangeListener.onChange(getSelectedText(curIndex));
+
                 preIndex = curIndex;
-            break;
+                break;
 
-            case MotionEvent.ACTION_MOVE :
+            case MotionEvent.ACTION_MOVE:
                 yDown = event.getY();
                 curIndex = (int) (yDown / cellHeight);
                 invalidate();
 
                 //过滤重复触发
-                if (curIndex != preIndex)
-                    mChangeListener.onChange(curIndex);
-                preIndex = curIndex;            break;
+                if (curIndex != preIndex) {
+                    mChangeListener.onChange(getSelectedText(curIndex));
+                }
+                preIndex = curIndex;
+                break;
 
-            case MotionEvent.ACTION_UP :
+            case MotionEvent.ACTION_UP:
                 curIndex = -1;
                 invalidate();
 
-                mChangeListener.onChange(curIndex);
+                mChangeListener.onChange("");//返回无效的空字符
 
                 break;
         }
         return true;
+    }
+
+    private String getSelectedText(int curIndex) {
+        if (curIndex >= 1 && curIndex <= (words.length -2)) {
+            return words[curIndex];
+        }
+        return "";//返回无效的空字符
     }
 }

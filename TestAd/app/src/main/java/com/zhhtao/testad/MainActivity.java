@@ -8,9 +8,11 @@ import android.widget.Button;
 import com.zhhtao.activity.AnimatorTestActivity;
 import com.zhhtao.activity.CalendarTestActivity;
 import com.zhhtao.activity.DrawTestActivity;
+import com.zhhtao.activity.GreenDaoTestActivity;
 import com.zhhtao.activity.IndicatorAdvanceActivity;
 import com.zhhtao.activity.IndicatorTestActivity;
 import com.zhhtao.activity.RetrofitTestActivity;
+import com.zhhtao.activity.RxJavaActivity;
 import com.zhhtao.activity.ScrollTestActivity;
 import com.zhhtao.utils.ZhtUtils;
 
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
     Button btnCalendar;
     @InjectView(R.id.btn_net)
     Button btnNet;
+    @InjectView(R.id.btn_green_dao)
+    Button btnGreenDao;
+    @InjectView(R.id.btn_rx_java)
+    Button btnRxJava;
 
 
     @Override
@@ -80,5 +86,15 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_net)
     public void btnNet() {
         ZhtUtils.gotoIntent(mContext, RetrofitTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_green_dao)
+    public void btnGreenDao() {
+        ZhtUtils.gotoIntent(mContext, GreenDaoTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_rx_java)
+    public void btnRxJava() {
+        ZhtUtils.gotoIntent(mContext, RxJavaActivity.class);
     }
 }

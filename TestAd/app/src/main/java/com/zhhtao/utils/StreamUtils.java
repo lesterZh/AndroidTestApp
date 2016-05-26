@@ -16,13 +16,20 @@ public class StreamUtils {
 			while((len = is.read(buffer)) != -1) {
 				baos.write(buffer, 0, len);
 			}
-			
-			is.close();
+			baos.flush();
 			return new String(baos.toByteArray());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
+		} finally {
+			try {
+				is.close();
+				baos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 		}
 	}
 }
