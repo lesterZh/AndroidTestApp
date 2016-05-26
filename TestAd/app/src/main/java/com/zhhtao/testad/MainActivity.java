@@ -14,6 +14,7 @@ import com.zhhtao.activity.IndicatorTestActivity;
 import com.zhhtao.activity.RetrofitTestActivity;
 import com.zhhtao.activity.RxJavaActivity;
 import com.zhhtao.activity.ScrollTestActivity;
+import com.zhhtao.activity.SwipeRefreshLayoutTestActivity;
 import com.zhhtao.utils.ZhtUtils;
 
 import butterknife.ButterKnife;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnGreenDao;
     @InjectView(R.id.btn_rx_java)
     Button btnRxJava;
+    @InjectView(R.id.btn_refresh)
+    Button btnRefresh;
 
 
     @Override
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         ZhtUtils.gotoIntent(mContext, RetrofitTestActivity.class);
     }
 
+
     @OnClick(R.id.btn_green_dao)
     public void btnGreenDao() {
         ZhtUtils.gotoIntent(mContext, GreenDaoTestActivity.class);
@@ -96,5 +100,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_rx_java)
     public void btnRxJava() {
         ZhtUtils.gotoIntent(mContext, RxJavaActivity.class);
+    }
+
+    @OnClick(R.id.btn_refresh)
+    public void btnRefresh() {
+        ZhtUtils.gotoIntent(mContext, SwipeRefreshLayoutTestActivity.class);
     }
 }
