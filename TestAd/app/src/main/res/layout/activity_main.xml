@@ -6,6 +6,7 @@
 
 
     <Button
+        android:layout_margin="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Indicator"
@@ -15,6 +16,7 @@
         android:layout_alignParentStart="true"/>
 
     <Button
+        android:layout_margin="3dp"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +27,7 @@
         android:layout_toEndOf="@+id/btn_indicator"/>
 
     <Button
+        android:layout_margin="3dp"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +38,7 @@
         android:layout_toEndOf="@+id/btn_animator"/>
 
     <Button
+        android:layout_margin="3dp"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +49,7 @@
         android:layout_toEndOf="@+id/btn_new_indicator"/>
 
     <Button
+        android:layout_margin="3dp"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,6 +60,7 @@
         android:layout_alignParentEnd="true"/>
 
     <Button
+        android:layout_margin="3dp"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,6 +71,7 @@
         android:layout_alignParentStart="true"/>
 
     <Button
+        android:layout_margin="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="retrofit"
@@ -72,4 +79,15 @@
         android:layout_below="@+id/btn_indicator"
         android:layout_toLeftOf="@+id/btn_scroll_test"
         android:layout_toStartOf="@+id/btn_scroll_test" />
+
+    <Button
+        android:layout_margin="3dp"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下拉刷新"
+        android:id="@+id/btn_refresh"
+        android:layout_alignBottom="@+id/btn_net"
+        android:layout_toLeftOf="@+id/btn_net"
+        android:layout_toStartOf="@+id/btn_net" />
 </RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/swipe_container"
+    tools:context="com.zhhtao.activity.SwipeRefreshLayoutTestActivity">
+
+    <!--SwipeRefreshLayout的子孩子必须是listview或者scrollview，RecyclerView，即可滑动的view-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_marginTop="300dp"
+            android:id="@+id/tv_random_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="随机数字："/>
+        </RelativeLayout>
+    </ScrollView>
+
+</android.support.v4.widget.SwipeRefreshLayout>

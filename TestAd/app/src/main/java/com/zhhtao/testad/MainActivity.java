@@ -12,6 +12,7 @@ import com.zhhtao.activity.IndicatorAdvanceActivity;
 import com.zhhtao.activity.IndicatorTestActivity;
 import com.zhhtao.activity.RetrofitTestActivity;
 import com.zhhtao.activity.ScrollTestActivity;
+import com.zhhtao.activity.SwipeRefreshLayoutTestActivity;
 import com.zhhtao.utils.ZhtUtils;
 
 import butterknife.ButterKnife;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnCalendar;
     @InjectView(R.id.btn_net)
     Button btnNet;
+    @InjectView(R.id.btn_refresh)
+    Button btnRefresh;
 
 
     @Override
@@ -80,5 +83,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_net)
     public void btnNet() {
         ZhtUtils.gotoIntent(mContext, RetrofitTestActivity.class);
+    }
+
+    @OnClick(R.id.btn_refresh)
+    public void btnRefresh() {
+        ZhtUtils.gotoIntent(mContext, SwipeRefreshLayoutTestActivity.class);
     }
 }

@@ -20,12 +20,13 @@
         <activity
             android:name="com.zhhtao.activity.IndicatorTestActivity"
             android:theme="@style/Theme.AppCompat" />
-        <activity android:name="com.zhhtao.activity.AnimatorTestActivity"></activity>
-        <activity android:name="com.zhhtao.activity.IndicatorAdvanceActivity"></activity>
-        <activity android:name="com.zhhtao.activity.ScrollTestActivity"></activity>
-        <activity android:name="com.zhhtao.activity.DrawTestActivity"></activity>
-        <activity android:name="com.zhhtao.activity.CalendarTestActivity"></activity>
-        <activity android:name="com.zhhtao.activity.RetrofitTestActivity"></activity>
+        <activity android:name="com.zhhtao.activity.AnimatorTestActivity" />
+        <activity android:name="com.zhhtao.activity.IndicatorAdvanceActivity" />
+        <activity android:name="com.zhhtao.activity.ScrollTestActivity" />
+        <activity android:name="com.zhhtao.activity.DrawTestActivity" />
+        <activity android:name="com.zhhtao.activity.CalendarTestActivity" />
+        <activity android:name="com.zhhtao.activity.RetrofitTestActivity" />
+        <activity android:name="com.zhhtao.activity.SwipeRefreshLayoutTestActivity"></activity>
     </application>
 
 </manifest>

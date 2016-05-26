@@ -30,7 +30,7 @@ import com.zhhtao.utils.LogUtil;
         zht:unselect_text_color="#666"
         zht:select_text_color="@android:color/holo_blue_dark"
         zht:text_size="16sp"
-        zht:text_top_bottom_padding = "10sp"
+        zht:text_top_bottom_padding = "10dp"
         zht:text_left_right_padding = "10dp"
         zht:indicator_color="@android:color/holo_blue_dark"
         zht:indicator_height="2dp"
