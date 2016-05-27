@@ -78,7 +78,7 @@ public class CommonListAdapter<T> extends RecyclerView.Adapter<CommonViewHolder>
   }
 
   @Override
-  public void onBindHolder(CommonViewHolder holder, int position) {
+  public void onBindViewHolder(CommonViewHolder holder, int position) {
     if (position >= 0 && position < dataList.size()) {
       holder.bindData(dataList.get(position));
     }

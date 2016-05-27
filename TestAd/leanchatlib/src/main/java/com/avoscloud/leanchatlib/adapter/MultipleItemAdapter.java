@@ -97,7 +97,7 @@ public class MultipleItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
   }
 
   @Override
-  public void onBindHolder(RecyclerView.ViewHolder holder, int position) {
+  public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     ((CommonViewHolder)holder).bindData(messageList.get(position));
     if (holder instanceof ChatItemHolder) {
       ((ChatItemHolder)holder).showTimeView(shouldShowTime(position));

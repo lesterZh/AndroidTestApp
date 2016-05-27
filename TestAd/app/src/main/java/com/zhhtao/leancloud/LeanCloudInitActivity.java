@@ -1,14 +1,22 @@
 package com.zhhtao.leancloud;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.SaveCallback;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
+import com.avoscloud.leanchatlib.activity.AVChatActivity;
+import com.avoscloud.leanchatlib.controller.ChatManager;
+import com.avoscloud.leanchatlib.utils.Constants;
 import com.zhhtao.base.BaseActivty;
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.LogUtil;
+import com.zhhtao.utils.UIUtils;
 import com.zhhtao.utils.ZhtUtils;
 
 import java.util.Date;
@@ -48,7 +56,18 @@ public class LeanCloudInitActivity extends BaseActivty {
 
     @OnClick(R.id.btn_chat)
     public void btnChat() {
-
+        ChatManager.getInstance().openClient(this, "0", new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+                if (null == e) {
+                    Intent intent = new Intent(mContext, AVChatActivity.class);
+                    intent.putExtra(Constants.MEMBER_ID, "bb");
+                    startActivity(intent);
+                } else {
+                    UIUtils.showToast(mContext, e.toString());
+                }
+            }
+        });
     }
 
     @OnClick(R.id.btn_save_data)
