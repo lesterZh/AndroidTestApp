@@ -18,34 +18,35 @@ import com.zhhtao.activity.SwipeRefreshLayoutTestActivity;
 import com.zhhtao.leancloud.LeanCloudInitActivity;
 import com.zhhtao.utils.ZhtUtils;
 
-import butterknife.BindView;
+import butterknife.Bind;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     Activity mContext;
 
-    @BindView(R.id.btn_indicator)
+    @Bind(R.id.btn_indicator)
     Button btnIndicator;
-    @BindView(R.id.btn_animator)
+    @Bind(R.id.btn_animator)
     Button btnAnimator;
-    @BindView(R.id.btn_new_indicator)
+    @Bind(R.id.btn_new_indicator)
     Button btnNewIndicator;
-    @BindView(R.id.btn_scroll_test)
+    @Bind(R.id.btn_scroll_test)
     Button btnScrollTest;
-    @BindView(R.id.btn_draw_test)
+    @Bind(R.id.btn_draw_test)
     Button btnDrawTest;
-    @BindView(R.id.btn_calendar)
+    @Bind(R.id.btn_calendar)
     Button btnCalendar;
-    @BindView(R.id.btn_net)
+    @Bind(R.id.btn_net)
     Button btnNet;
-    @BindView(R.id.btn_green_dao)
+    @Bind(R.id.btn_green_dao)
     Button btnGreenDao;
-    @BindView(R.id.btn_rx_java)
+    @Bind(R.id.btn_rx_java)
     Button btnRxJava;
-    @BindView(R.id.btn_refresh)
+    @Bind(R.id.btn_refresh)
     Button btnRefresh;
-    @BindView(R.id.btn_lean_cloud)
+    @Bind(R.id.btn_lean_cloud)
     Button btnLeanCloud;
 
     @Override

@@ -10,18 +10,18 @@ import com.zhhtao.testad.R;
 import com.zhhtao.ui.ScaleWheel;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 
 /**
  * Created by zhangHaiTao on 2016/5/17.
  */
 public class DrawTestActivity extends BaseActivty {
 
-    @BindView(R.id.scale_view)
+    @Bind(R.id.scale_view)
     ScaleWheel scaleView;
-    @BindView(R.id.index_bar)
+    @Bind(R.id.index_bar)
     QuickIndexBar indexBar;
-    @BindView(R.id.tv_show_quick_index)
+    @Bind(R.id.tv_show_quick_index)
     TextView tvShowQuickIndex;
 
     @Override

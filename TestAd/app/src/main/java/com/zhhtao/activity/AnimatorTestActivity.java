@@ -25,34 +25,34 @@ import com.zhhtao.testad.R;
 import com.zhhtao.utils.UIUtils;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.OnClick;
 
 public class AnimatorTestActivity extends BaseActivty {
 
-    @BindView(R.id.iv_girl)
+    @Bind(R.id.iv_girl)
     ImageView ivGirl;
-    @BindView(R.id.btn_scale)
+    @Bind(R.id.btn_scale)
     Button btnShow;
-    @BindView(R.id.btn_hide)
+    @Bind(R.id.btn_hide)
     Button btnHide;
-    @BindView(R.id.btn_down)
+    @Bind(R.id.btn_down)
     Button btnDown;
-    @BindView(R.id.btn_down_dismiss)
+    @Bind(R.id.btn_down_dismiss)
     Button btnDownDismiss;
-    @BindView(R.id.ll_down)
+    @Bind(R.id.ll_down)
     LinearLayout llDown;
-    @BindView(R.id.btn_add_window)
+    @Bind(R.id.btn_add_window)
     Button btnAddWindow;
-    @BindView(R.id.btn_move)
+    @Bind(R.id.btn_move)
     Button btnMove;
-    @BindView(R.id.iv_progress)
+    @Bind(R.id.iv_progress)
     ImageView ivProgress;
-    @BindView(R.id.ll_change_bg)
+    @Bind(R.id.ll_change_bg)
     LinearLayout llChangeBg;
-    @BindView(R.id.btn_progress)
+    @Bind(R.id.btn_progress)
     Button btnProgress;
-    @BindView(R.id.btn_pop)
+    @Bind(R.id.btn_pop)
     Button btnPop;
 
     @Override

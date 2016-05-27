@@ -43,7 +43,7 @@ import com.zhhtao.testad.R;
 代码配置：
 indicator.setTitles(new String[]{"天使", "上帝", "亚当"});
 viewPager.setAdapter(new MyViewPagerAdapter());
-indicator.bindViewPager(viewPager);
+indicator.BindPager(viewPager);
 
 依赖自定义属性：attrs.xml
  <resources>
@@ -295,7 +295,7 @@ public class IndicatorAdvanced extends LinearLayout {
      * 绑定viewpager  viewpager的页数应和indicator的标题数目一致
      * @param viewPager
      */
-    public void bindViewPager(ViewPager viewPager) {
+    public void BindPager(ViewPager viewPager) {
 
         mViewPager = viewPager;
 

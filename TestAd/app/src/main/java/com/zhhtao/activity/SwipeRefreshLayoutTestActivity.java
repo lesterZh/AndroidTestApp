@@ -10,13 +10,13 @@ import android.widget.TextView;
 import com.zhhtao.testad.R;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 
 public class SwipeRefreshLayoutTestActivity extends AppCompatActivity {
 
-    @BindView(R.id.tv_random_num)
+    @Bind(R.id.tv_random_num)
     TextView tvRandomNum;
-    @BindView(R.id.swipe_container)
+    @Bind(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
 
     @Override

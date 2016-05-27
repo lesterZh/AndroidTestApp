@@ -9,7 +9,7 @@ import com.zhhtao.testad.R;
 import com.zhhtao.utils.LogUtil;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -19,7 +19,7 @@ import rx.schedulers.Schedulers;
 
 public class RxJavaActivity extends AppCompatActivity {
 
-    @BindView(R.id.imageView)
+    @Bind(R.id.imageView)
     ImageView imageView;
 
     @Override

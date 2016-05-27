@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 
 public class IndicatorAdvanceActivity extends BaseActivty {
 
-    @BindView(R.id.indicator)
+    @Bind(R.id.indicator)
     IndicatorAdvanced indicator;
-    @BindView(R.id.viewPager)
+    @Bind(R.id.viewPager)
     ViewPager viewPager;
 
 
@@ -45,7 +45,7 @@ public class IndicatorAdvanceActivity extends BaseActivty {
         }
         indicator.setTitles(titles);
         viewPager.setAdapter(new MyViewPagerAdapter());
-        indicator.bindViewPager(viewPager);
+        indicator.BindPager(viewPager);
 
 
         indicator.setIndex(4);

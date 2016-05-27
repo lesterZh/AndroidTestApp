@@ -245,7 +245,7 @@ public class ZhtCustomIndicator extends View {
      * 绑定对应的ViewPager的视图个数应该和标题数目一致
      * @param viewPager
      */
-    public void bindViewPager(ViewPager viewPager) {
+    public void BindPager(ViewPager viewPager) {
 
         if (viewPager.getAdapter().getCount() != titles.length) {
             Log.e(getClass().getSimpleName(), "绑定的ViewPager视图个数和标题数目不一致");

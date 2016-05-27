@@ -15,15 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 
 /**
  * Created by zhangHaiTao on 2016/5/13.
  */
 public class IndicatorTestActivity extends BaseActivty {
-    @BindView(R.id.indicator)
+    @Bind(R.id.indicator)
     ZhtCustomIndicator indicator;
-    @BindView(R.id.viewPager)
+    @Bind(R.id.viewPager)
     ViewPager viewPager;
 
     List<View> viewList = new ArrayList<>();
@@ -40,7 +40,7 @@ public class IndicatorTestActivity extends BaseActivty {
         }
         indicator.setTitles(new String[]{"天使", "上帝", "亚当","苹果","西瓜"});
         viewPager.setAdapter(new MyViewPagerAdapter());
-        indicator.bindViewPager(viewPager);
+        indicator.BindPager(viewPager);
     }
 
     class MyViewPagerAdapter extends PagerAdapter {

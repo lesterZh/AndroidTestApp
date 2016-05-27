@@ -66,11 +66,11 @@ public class HeaderListAdapter<T> extends CommonListAdapter<T> {
   }
 
   @Override
-  public void onBindViewHolder(CommonViewHolder holder, int position) {
+  public void onBindHolder(CommonViewHolder holder, int position) {
     if (position == 0 && position == getItemCount() - 1) {
       return;
     }
-    super.onBindViewHolder(holder, position);
+    super.onBindHolder(holder, position);
   }
 
   @Override

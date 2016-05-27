@@ -9,24 +9,30 @@ import com.avos.avoscloud.SaveCallback;
 import com.zhhtao.base.BaseActivty;
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.LogUtil;
+import com.zhhtao.utils.ZhtUtils;
 
 import java.util.Date;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LeanCloudInitActivity extends BaseActivty {
 
-    @BindView(R.id.btn_chat)
+    @Bind(R.id.btn_chat)
     Button btnChat;
+    @Bind(R.id.btn_save_data)
+    Button btnSaveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lean_cloud_init);
         ButterKnife.bind(this);
+//        testSDK();
+    }
 
+    private void testSDK() {
         // 测试 SDK 是否正常工作的代码
         AVObject testObject = new AVObject("TestObject");
         testObject.put("words", "Hello World!" + new Date());
@@ -42,8 +48,11 @@ public class LeanCloudInitActivity extends BaseActivty {
 
     @OnClick(R.id.btn_chat)
     public void btnChat() {
-//        Intent intent = new Intent(mContext, AVChatActivity.class);
-//        intent.putExtra(Constants.MEMBER_ID, "6");
-//        startActivity(intent);
+
+    }
+
+    @OnClick(R.id.btn_save_data)
+    public void btnSaveData() {
+        ZhtUtils.gotoIntent(mContext, SaveDataActivity.class);
     }
 }

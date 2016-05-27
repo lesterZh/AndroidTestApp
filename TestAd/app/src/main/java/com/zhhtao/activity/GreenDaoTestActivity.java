@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.OnClick;
 import greendao.note.DaoMaster;
 import greendao.note.DaoSession;
@@ -33,24 +33,24 @@ public class GreenDaoTestActivity extends BaseActivty {
     DaoMaster daoMaster;
     DaoSession daoSession;
     NoteDao noteDao;
-    @BindView(R.id.et_input)
+    @Bind(R.id.et_input)
     EditText etInput;
-    @BindView(R.id.btn_add)
+    @Bind(R.id.btn_add)
     Button btnAdd;
-    @BindView(R.id.btn_query)
+    @Bind(R.id.btn_query)
     Button btnQuery;
-    @BindView(R.id.btn_update)
+    @Bind(R.id.btn_update)
     Button btnUpdate;
-    @BindView(R.id.btn_delete)
+    @Bind(R.id.btn_delete)
     Button btnDelete;
-    @BindView(R.id.lv_datas)
+    @Bind(R.id.lv_datas)
     ListView lvDatas;
     MyAdapter myAdapter;
 
     String input;
     List<Note> notesList = new ArrayList<>();
     List<Note> queryList = new ArrayList<>();
-    @BindView(R.id.btn_delete_all)
+    @Bind(R.id.btn_delete_all)
     Button btnDeleteAll;
 
     @Override

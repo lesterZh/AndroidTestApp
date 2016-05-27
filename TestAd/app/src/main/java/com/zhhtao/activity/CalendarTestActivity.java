@@ -18,14 +18,14 @@ import java.util.Calendar;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 
 /**
  * Created by zhangHaiTao on 2016/5/17.
  */
 public class CalendarTestActivity extends BaseActivty {
 
-    @BindView(R.id.calendar_view)
+    @Bind(R.id.calendar_view)
     MaterialCalendarView calendarView;
 
     List<CalendarDay> orderDayList = new ArrayList<>();

@@ -14,7 +14,7 @@ import com.zhhtao.testad.R;
 import java.io.IOException;
 
 import butterknife.ButterKnife;
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -28,13 +28,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitTestActivity extends BaseActivty {
 
-    @BindView(R.id.et_input)
+    @Bind(R.id.et_input)
     EditText etInput;
-    @BindView(R.id.btn_query)
+    @Bind(R.id.btn_query)
     Button btnQuery;
-    @BindView(R.id.tv_res)
+    @Bind(R.id.tv_res)
     TextView tvRes;
-    @BindView(R.id.btn_get_string)
+    @Bind(R.id.btn_get_string)
     Button btnGetString;
 
     @Override
