@@ -18,7 +18,13 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initLeanCloud();
+    }
 
+    /**
+     * 初始化leanCloud实时通信
+     */
+    private void initLeanCloud() {
         // 初始化参数依次为 this, AppId, AppKey
         AVOSCloud.initialize(this, "I4AiOzuTXH58hlwzmavFRFuY-gzGzoHsz", "VNNdwm14AProYqwFyd9DkRb6");
         ChatManager.setDebugEnabled(true);// tag leanchatlib
@@ -26,7 +32,6 @@ public class MyApplication extends Application {
         initImageLoader(this);
         ChatManager.getInstance().init(this);
         ThirdPartUserUtils.setThirdPartUserProvider(new CustomUserProvider());
-
     }
 
     public static void initImageLoader(Context context) {

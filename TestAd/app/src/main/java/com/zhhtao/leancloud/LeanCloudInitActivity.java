@@ -3,6 +3,7 @@ package com.zhhtao.leancloud;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -31,6 +32,12 @@ public class LeanCloudInitActivity extends BaseActivty {
     Button btnChat;
     @Bind(R.id.btn_save_data)
     Button btnSaveData;
+    @Bind(R.id.et_from)
+    EditText etFrom;
+    @Bind(R.id.et_to)
+    EditText etTo;
+    @Bind(R.id.btn_send_message)
+    Button btnSendMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +61,19 @@ public class LeanCloudInitActivity extends BaseActivty {
         });
     }
 
+    String from = "from";
+    String to = "to";
+
     @OnClick(R.id.btn_chat)
     public void btnChat() {
-        ChatManager.getInstance().openClient(this, "0", new AVIMClientCallback() {
+        from = etFrom.getText().toString().trim();
+        to = etTo.getText().toString().trim();
+        ChatManager.getInstance().openClient(this, from, new AVIMClientCallback() {
             @Override
             public void done(AVIMClient avimClient, AVIMException e) {
                 if (null == e) {
                     Intent intent = new Intent(mContext, AVChatActivity.class);
-                    intent.putExtra(Constants.MEMBER_ID, "bb");
+                    intent.putExtra(Constants.MEMBER_ID, to);
                     startActivity(intent);
                 } else {
                     UIUtils.showToast(mContext, e.toString());
@@ -70,8 +82,14 @@ public class LeanCloudInitActivity extends BaseActivty {
         });
     }
 
+
     @OnClick(R.id.btn_save_data)
     public void btnSaveData() {
         ZhtUtils.gotoIntent(mContext, SaveDataActivity.class);
+    }
+
+    @OnClick(R.id.btn_send_message)
+    public void btnSendMessage() {
+        
     }
 }
