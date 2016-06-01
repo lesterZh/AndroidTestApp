@@ -72,5 +72,21 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="46dp" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_send_msg"
+        android:layout_below="@+id/btn_send_message"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"
+        android:id="@+id/btn_login"
+        android:layout_alignTop="@+id/btn_send_message"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
