@@ -33,8 +33,8 @@
         <activity android:name="com.zhhtao.activity.DrawTestActivity" />
         <activity android:name="com.zhhtao.activity.CalendarTestActivity" />
         <activity android:name="com.zhhtao.activity.RetrofitTestActivity" />
-        <activity android:name="com.zhhtao.activity.GreenDaoTestActivity"></activity>
-        <activity android:name="com.zhhtao.activity.RxJavaActivity"></activity>
+        <activity android:name="com.zhhtao.activity.GreenDaoTestActivity" />
+        <activity android:name="com.zhhtao.activity.RxJavaActivity" />
         <activity android:name="com.zhhtao.activity.SwipeRefreshLayoutTestActivity" />
 
         <!-- 实时通信模块、推送（若使用该功能，需添加以下声明）START -->
@@ -48,8 +48,9 @@
         </receiver>
         <!-- 实时通信模块、推送 END -->
 
-        <activity android:name="com.zhhtao.leancloud.LeanCloudInitActivity"></activity>
-        <activity android:name="com.zhhtao.leancloud.SaveDataActivity"></activity>
+        <activity android:name="com.zhhtao.leancloud.LeanCloudInitActivity" />
+        <activity android:name="com.zhhtao.leancloud.SaveDataActivity" />
+        <activity android:name="com.zhhtao.activity.RecycleViewActivity"></activity>
     </application>
 
 </manifest>

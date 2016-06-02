@@ -122,4 +122,14 @@
         android:layout_below="@+id/btn_scroll_test"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:layout_margin="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="recycle"
+        android:id="@+id/btn_recycle"
+        android:layout_alignTop="@+id/btn_rx_java"
+        android:layout_toRightOf="@+id/btn_refresh"
+        android:layout_toEndOf="@+id/btn_refresh" />
 </RelativeLayout>

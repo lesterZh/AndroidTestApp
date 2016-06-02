@@ -11,6 +11,7 @@ import com.zhhtao.activity.DrawTestActivity;
 import com.zhhtao.activity.GreenDaoTestActivity;
 import com.zhhtao.activity.IndicatorAdvanceActivity;
 import com.zhhtao.activity.IndicatorTestActivity;
+import com.zhhtao.activity.RecycleViewActivity;
 import com.zhhtao.activity.RetrofitTestActivity;
 import com.zhhtao.activity.RxJavaActivity;
 import com.zhhtao.activity.ScrollTestActivity;
@@ -18,7 +19,6 @@ import com.zhhtao.activity.SwipeRefreshLayoutTestActivity;
 import com.zhhtao.leancloud.LeanCloudInitActivity;
 import com.zhhtao.utils.ZhtUtils;
 
-import butterknife.Bind;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnRefresh;
     @Bind(R.id.btn_lean_cloud)
     Button btnLeanCloud;
+    @Bind(R.id.btn_recycle)
+    Button btnRecycle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,5 +115,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_lean_cloud)
     public void btnLeanCloud() {
         ZhtUtils.gotoIntent(mContext, LeanCloudInitActivity.class);
+    }
+
+    @OnClick(R.id.btn_recycle)
+    public void btnRecycle() {
+        ZhtUtils.gotoIntent(mContext, RecycleViewActivity.class);
     }
 }

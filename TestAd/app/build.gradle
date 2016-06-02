@@ -54,5 +54,7 @@ dependencies {
     compile project(':calendarlib')
     compile 'com.jakewharton:butterknife:7.0.1'
 
+    compile 'com.android.support:recyclerview-v7:23.2.0'
+
     compile project(':leanchatlib')
 }
