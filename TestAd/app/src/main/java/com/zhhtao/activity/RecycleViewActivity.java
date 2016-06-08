@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.zhhtao.base.BaseActivty;
 import com.zhhtao.other.DividerGridItemDecoration;
+import com.zhhtao.other.DividerItemDecoration;
 import com.zhhtao.testad.R;
 import com.zhhtao.utils.LogUtil;
 import com.zhhtao.utils.UIUtils;
@@ -37,6 +39,7 @@ public class RecycleViewActivity extends BaseActivty {
     List<String> list = new ArrayList<>();
 
     MyRecycleAdapter adapter;
+    MyRecycleMultipeAdapter multipeAdapter;
     @Bind(R.id.btn_add)
     Button btnAdd;
     @Bind(R.id.btn_remove)
@@ -53,18 +56,42 @@ public class RecycleViewActivity extends BaseActivty {
             list.add("数据 " + i);
         }
 
+        for (int i = 0; i <= 50; i++) {
+            Msg msg = new Msg();
+            if (i % 3 == 0) {
+                msg.type = Msg.TYPE_FROM;
+                msg.message = "from"+i;
+            } else {
+                msg.type = Msg.TYPE_TO;
+                msg.message = "to"+i;
+            }
+            msgList.add(msg);
+        }
+
 //        listView.setAdapter(new MyListViewAdapter(mContext, 0, list));
-//        myRecycleView.setLayoutManager(new LinearLayoutManager(this));
-//        myRecycleView.setLayoutManager(new GridLayoutManager(this, 4));
+
+
+
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);//垂直
+//        mLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);//水平
+        myRecycleView.setLayoutManager(mLinearLayoutManager);//线性布局，
+//        myRecycleView.setLayoutManager(new GridLayoutManager(this, 4));//grid布局
 
         //瀑布流布局 4列
-        myRecycleView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
+//        myRecycleView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
         //4行
 //        myRecycleView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL));
+
+
         adapter = new MyRecycleAdapter();
-        myRecycleView.setAdapter(adapter);
-//        myRecycleView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));
-        myRecycleView.addItemDecoration(new DividerGridItemDecoration(mContext));
+        multipeAdapter = new MyRecycleMultipeAdapter();
+
+        myRecycleView.setAdapter(adapter);//一种布局类型的adapter
+//        myRecycleView.setAdapter(multipeAdapter);//多种类型布局的adapter
+
+        myRecycleView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL_LIST));//线性布局的分割线
+//        myRecycleView.addItemDecoration(new DividerGridItemDecoration(mContext));//gird布局的分割线
         myRecycleView.setItemAnimator(new DefaultItemAnimator());
 
     }
@@ -78,6 +105,85 @@ public class RecycleViewActivity extends BaseActivty {
             case R.id.btn_remove:
                 adapter.removeData(selectedPosition);
                 break;
+        }
+    }
+
+
+    List<Msg> msgList = new ArrayList<>();
+    class MyRecycleMultipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            if (viewType == Msg.TYPE_TO) {
+                return new ToViewHolder(
+                        LayoutInflater
+                                .from(mContext)
+                                .inflate(R.layout.item_list_to, parent, false));
+            } else if (viewType == Msg.TYPE_FROM){
+                return new FromViewHolder(
+                        LayoutInflater
+                                .from(mContext)
+                                .inflate(R.layout.item_list_from, parent, false));
+            } else if (viewType == Msg.TYPE_HEAD) {
+                return new HeadViewHolder(LayoutInflater.from(mContext)
+                    .inflate(R.layout.item_list_head, parent, false));
+            } else if (viewType == Msg.TYPE_BOTTOM) {
+                return new BottomViewHolder(LayoutInflater.from(mContext)
+                        .inflate(R.layout.item_list_bottom, parent, false));
+            }
+            return  null;
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            if (holder instanceof FromViewHolder) {
+                ((FromViewHolder) holder).textView.setText(msgList.get(position).message);
+            } else if (holder instanceof ToViewHolder) {
+                ((ToViewHolder) holder).textView.setText(msgList.get(position).message);
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+//            return msgList.size();
+            return msgList.size() + 1;//+1为了显示底部view
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            if (position == 0) return Msg.TYPE_HEAD;//头部view
+            if (position == msgList.size()) return  Msg.TYPE_BOTTOM;//底部view,需要修改getItemCount
+            return msgList.get(position).type ;//此时msgList中下标为0的数据不被显示
+        }
+
+
+        class FromViewHolder extends RecyclerView.ViewHolder {
+            TextView textView;
+            public FromViewHolder(View itemView) {
+                super(itemView);
+                textView = (TextView) itemView.findViewById(R.id.tv_desc);
+            }
+        }
+
+        class ToViewHolder extends RecyclerView.ViewHolder {
+            TextView textView;
+            public ToViewHolder(View itemView) {
+                super(itemView);
+                textView = (TextView) itemView.findViewById(R.id.tv_desc);
+            }
+        }
+
+        class HeadViewHolder extends RecyclerView.ViewHolder {
+            public HeadViewHolder(View itemView) {
+                super(itemView);
+            }
+        }
+
+        class BottomViewHolder extends RecyclerView.ViewHolder {
+            public BottomViewHolder(View itemView) {
+                super(itemView);
+            }
         }
     }
 
@@ -96,6 +202,7 @@ public class RecycleViewActivity extends BaseActivty {
 
             //最好在这里给view设置点击事件，提供外部设置事件响应的接口
             MyViewHolder viewHolder = new MyViewHolder(view);
+            LogUtil.i("onCreateViewHolder"+viewHolder);
             return viewHolder;
         }
 
@@ -167,3 +274,12 @@ public class RecycleViewActivity extends BaseActivty {
     }
 }
 
+class Msg {
+    static final int TYPE_FROM = 0;
+    static final int TYPE_TO = 1;
+    static final int TYPE_HEAD = 2;
+    static final int TYPE_BOTTOM = 3;
+
+    int type;
+    String message;
+}

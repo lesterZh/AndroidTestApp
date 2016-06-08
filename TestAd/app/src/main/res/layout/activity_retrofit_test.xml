@@ -37,10 +37,30 @@
         android:id="@+id/btn_get_string"
          />
 
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_res"
         android:layout_marginTop="20dp"
         android:text="查询结果："/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="验证码"
+        android:id="@+id/btn_verification"
+        android:layout_gravity="center_horizontal" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_smsCode"
+        android:hint="验证码"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:id="@+id/btn_login"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

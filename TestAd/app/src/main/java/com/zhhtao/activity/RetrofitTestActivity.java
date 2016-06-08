@@ -6,22 +6,36 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zhhtao.base.BaseActivty;
+import com.zhhtao.bean.LoginResultBean;
 import com.zhhtao.bean.PhoneResultBean;
-import com.zhhtao.custominterface.PhoneService;
-import com.zhhtao.custominterface.PhoneServiceGetString;
+import com.zhhtao.bean.SmsVerificationCodeBean;
+import com.zhhtao.net.NetApiServiceInterface;
+import com.zhhtao.net.NetUtil;
+import com.zhhtao.net.PhoneService;
+import com.zhhtao.net.PhoneServiceGetString;
 import com.zhhtao.testad.R;
+import com.zhhtao.utils.LogUtil;
+import com.zhhtao.utils.UIUtils;
+
+import org.json.JSONException;
+import org.json.JSONStringer;
 
 import java.io.IOException;
 
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by zhangHaiTao on 2016/5/23.
@@ -36,6 +50,12 @@ public class RetrofitTestActivity extends BaseActivty {
     TextView tvRes;
     @Bind(R.id.btn_get_string)
     Button btnGetString;
+    @Bind(R.id.btn_verification)
+    Button btnVerification;
+    @Bind(R.id.et_smsCode)
+    EditText etSmsCode;
+    @Bind(R.id.btn_login)
+    Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +63,7 @@ public class RetrofitTestActivity extends BaseActivty {
         setContentView(R.layout.activity_retrofit_test);
         ButterKnife.bind(this);
         tvRes.setText("查询结果：");
-        etInput.setText("13312345678");
+        etInput.setText("17729849372");
     }
 
     private static final String BASE_URL = "http://apis.baidu.com";
@@ -91,7 +111,6 @@ public class RetrofitTestActivity extends BaseActivty {
             }
         });
     }
-
 
 
     //http://www.jianshu.com/p/92bb85fc07e8 通过ResponseBody获取文件
@@ -152,6 +171,118 @@ public class RetrofitTestActivity extends BaseActivty {
         });
     }
 
+    /**
+     * 发送验证码
+     */
+    void getVerificationCode() {
+        String baseUrl = "http://192.168.2.2:8080/gaia/member/";
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        NetApiServiceInterface service = retrofit.create(NetApiServiceInterface.class);
+
+        String input = etInput.getText().toString();
+
+        //构造post请求体
+        JSONStringer jsonStringer = null;
+        try {
+            jsonStringer = new JSONStringer().object()
+                    .key("phone").value(input)
+                    .endObject();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String jsonStr = jsonStringer.toString();
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonStr);
+        Call<SmsVerificationCodeBean> call = service.getVerificationCode(body);
+        call.enqueue(new Callback<SmsVerificationCodeBean>() {
+            @Override
+            public void onResponse(Call<SmsVerificationCodeBean> call, Response<SmsVerificationCodeBean> response) {
+                if (response.isSuccessful()) {
+                    SmsVerificationCodeBean smsVerificationCodeBean = response.body();
+                    LogUtil.w(smsVerificationCodeBean.toString());
+                    UIUtils.showText(mContext, smsVerificationCodeBean.toString());
+                } else {
+                    LogUtil.w("failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SmsVerificationCodeBean> call, Throwable t) {
+                LogUtil.w("failed");
+            }
+        });
+    }
+
+    /**
+     * 登录
+     */
+    public void loginWithPhoneAndVerfication() {
+        String baseUrl = "http://192.168.2.2:8080/gaia/member/";
+
+        String phone = etInput.getText().toString();
+        String smsCode = etSmsCode.getText().toString();
+        JSONStringer jsonStringer = null;
+        try {
+            jsonStringer = new JSONStringer().object()
+                    .key("phone").value(phone)
+                    .key("smsCode").value(smsCode)
+                    .key("ulon").value(99)
+                    .key("ulat").value(99)
+                    .key("geohashLength").value(1)
+                    .key("limitKm").value(1)
+                    .endObject();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        String jsonStr = jsonStringer.toString();
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonStr);
+
+
+//        NetUtil.getInstance().getNetApiServiceInterface(baseUrl)
+//                .postLogin(body)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<LoginResultBean>() {
+//                    @Override
+//                    public void call(LoginResultBean loginResultBean) {
+//                        if (loginResultBean != null) {
+//                            LogUtil.w(loginResultBean.toString());
+//                        } else {
+//                            LogUtil.w("failed");
+//                        }
+//                    }
+//                });
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        NetApiServiceInterface service = retrofit.create(NetApiServiceInterface.class);
+        Call<LoginResultBean> call = service.postLogin2(body);
+        call.enqueue(new Callback<LoginResultBean>() {
+            @Override
+            public void onResponse(Call<LoginResultBean> call, Response<LoginResultBean> response) {
+                if (response.isSuccessful()) {
+                    LoginResultBean loginResultBean = response.body();
+                    UIUtils.showText(mContext, loginResultBean.toString());
+                } else {
+                    UIUtils.showText(mContext, "login fail");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResultBean> call, Throwable t) {
+                UIUtils.showText(mContext, "onFailure");
+            }
+        });
+    }
+
     @OnClick(R.id.btn_query)
     public void onClick() {
         qurey();
@@ -160,5 +291,15 @@ public class RetrofitTestActivity extends BaseActivty {
     @OnClick(R.id.btn_get_string)
     public void btnGetString() {
         qureyForString();
+    }
+
+    @OnClick(R.id.btn_verification)
+    public void btnVerification() {
+        getVerificationCode();
+    }
+
+    @OnClick(R.id.btn_login)
+    public void btnLogin() {
+        loginWithPhoneAndVerfication();
     }
 }

@@ -2,6 +2,7 @@ package com.zhhtao.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
@@ -28,11 +29,30 @@ public class RxJavaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rx_java);
         ButterKnife.bind(this);
 
-        testRxJava();
-        testRxJava2();
-        testRxJava3();
-        testRxJava4();
-        testRxJava5();
+//        testRxJava();
+//        testRxJava2();
+//        testRxJava3();
+//        testRxJava4();
+//        testRxJava5();
+        testRxJava6();
+    }
+
+    private void testRxJava6() {
+        Observable.just(R.drawable.debug_image_girl)
+                .map(new Func1<Integer, Drawable>() {
+                    @Override
+                    public Drawable call(Integer integer) {
+//                        SystemClock.sleep(2000);
+                        return getResources().getDrawable(integer);
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Action1<Drawable>() {
+                    @Override
+                    public void call(Drawable drawable) {
+                        imageView.setImageDrawable(drawable);
+                    }
+                });
     }
 
     private void testRxJava5() {

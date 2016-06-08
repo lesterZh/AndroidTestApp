@@ -1,6 +1,7 @@
 package zht.test;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -33,16 +34,6 @@ public class ChatActivity extends AVBaseActivity {
   private FrameLayout ftContainer;
   MyConversationFragment conversationFragment;
 
-  /**
-   * 上一次点击 back 键的时间
-   * 用于双击退出的判断
-   */
-  private static long lastBackTime = 0;
-
-  /**
-   * 当双击 back 键在此间隔内是直接触发 onBackPressed
-   */
-  private final int BACK_INTERVAL = 1000;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +45,21 @@ public class ChatActivity extends AVBaseActivity {
     ftContainer = (FrameLayout) findViewById(R.id.ft_container);
     conversationFragment = new MyConversationFragment();
 
+    new Handler().postDelayed(new Runnable() {
+      @Override
+      public void run() {
+        EventBus.getDefault().post(new ConversationFragmentUpdateEvent());
+      }
+    }, 1000);
     getSupportFragmentManager().beginTransaction()
             .replace(R.id.ft_container, conversationFragment)
             .commit();
 
-    EventBus.getDefault().post(new ConversationFragmentUpdateEvent());
-//    initTabLayout();
   }
 
-
+  @Override
+  protected void onResume() {
+    super.onResume();
+    EventBus.getDefault().post(new ConversationFragmentUpdateEvent());
+  }
 }
